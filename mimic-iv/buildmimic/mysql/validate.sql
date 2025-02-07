@@ -1,5 +1,5 @@
 -- Validate the MIMIC-IV tables built correctly by checking against known row counts
--- of MIMIC-IV v2.1
+-- of MIMIC-IV v3.1
 SELECT
     CASE
         WHEN exp.row_count = obs.row_count
@@ -11,38 +11,38 @@ SELECT
     , exp.tbl
 -- expected row count - hard-coded based off known values
 FROM (
-    SELECT 'admissions' AS tbl,         431231 AS row_count UNION ALL
-    SELECT 'd_hcpcs' AS tbl,            89200 AS row_count UNION ALL
-    SELECT 'd_icd_diagnoses' AS tbl,    109775 AS row_count UNION ALL
-    SELECT 'd_icd_procedures' AS tbl,   85257 AS row_count UNION ALL
-    SELECT 'd_labitems' AS tbl,         1622 AS row_count UNION ALL
-    SELECT 'diagnoses_icd' AS tbl,      4756326 AS row_count UNION ALL
-    SELECT 'drgcodes' AS tbl,           604377 AS row_count UNION ALL
-    SELECT 'emar' AS tbl,               26850359 AS row_count UNION ALL
-    SELECT 'emar_detail' AS tbl,        54744789 AS row_count UNION ALL
-    SELECT 'hcpcsevents' AS tbl,        150771 AS row_count UNION ALL
-    SELECT 'labevents' AS tbl,          118171367 AS row_count UNION ALL
-    SELECT 'microbiologyevents' AS tbl, 3228713 AS row_count UNION ALL
-    SELECT 'omr' AS tbl,                6439169 AS row_count UNION ALL
-    SELECT 'patients' AS tbl,           299712 AS row_count UNION ALL
-    SELECT 'pharmacy' AS tbl,           13584514 AS row_count UNION ALL
-    SELECT 'poe' AS tbl,                39366291 AS row_count UNION ALL
-    SELECT 'poe_detail' AS tbl,         3879418 AS row_count UNION ALL
-    SELECT 'prescriptions' AS tbl,      15416708 AS row_count UNION ALL
-    SELECT 'procedures_icd' AS tbl,     669186 AS row_count UNION ALL
-    SELECT 'services' AS tbl,           468029 AS row_count UNION ALL
-    SELECT 'transfers' AS tbl,          1890972 AS row_count UNION ALL
+    SELECT 'admissions' AS tbl,         546028 AS row_count UNION ALL
+    SELECT 'd_hcpcs' AS tbl,            89208 AS row_count UNION ALL
+    SELECT 'd_icd_diagnoses' AS tbl,    112107 AS row_count UNION ALL
+    SELECT 'd_icd_procedures' AS tbl,   86423 AS row_count UNION ALL
+    SELECT 'd_labitems' AS tbl,         1650 AS row_count UNION ALL
+    SELECT 'diagnoses_icd' AS tbl,      6364488 AS row_count UNION ALL
+    SELECT 'drgcodes' AS tbl,           761856 AS row_count UNION ALL
+    SELECT 'emar' AS tbl,               42808593 AS row_count UNION ALL
+    SELECT 'emar_detail' AS tbl,        87371064 AS row_count UNION ALL
+    SELECT 'hcpcsevents' AS tbl,        186074 AS row_count UNION ALL
+    SELECT 'labevents' AS tbl,          158374764 AS row_count UNION ALL
+    SELECT 'microbiologyevents' AS tbl, 3988224 AS row_count UNION ALL
+    SELECT 'omr' AS tbl,                7753027 AS row_count UNION ALL
+    SELECT 'patients' AS tbl,           364627 AS row_count UNION ALL
+    SELECT 'pharmacy' AS tbl,           17847567 AS row_count UNION ALL
+    SELECT 'poe' AS tbl,                52212109 AS row_count UNION ALL
+    SELECT 'poe_detail' AS tbl,         8504982 AS row_count UNION ALL
+    SELECT 'prescriptions' AS tbl,      20292611 AS row_count UNION ALL
+    SELECT 'procedures_icd' AS tbl,     859655 AS row_count UNION ALL
+    SELECT 'services' AS tbl,           593071 AS row_count UNION ALL
+    SELECT 'transfers' AS tbl,          2413581 AS row_count UNION ALL
     -- icu data
-    SELECT 'icustays' AS tbl,           73181 AS row_count UNION ALL
-    SELECT 'd_items' AS tbl,            4014 AS row_count UNION ALL
-    SELECT 'chartevents' AS tbl,        313645063 AS row_count UNION ALL
-    SELECT 'datetimeevents' AS tbl,     7112999 AS row_count UNION ALL
-    SELECT 'inputevents' AS tbl,        8978893 AS row_count UNION ALL
-    SELECT 'outputevents' AS tbl,       4234967 AS row_count UNION ALL
-    SELECT 'procedureevents' AS tbl,    696092 AS row_count
+    SELECT 'icustays' AS tbl,           94458 AS row_count UNION ALL
+    SELECT 'd_items' AS tbl,            4095 AS row_count UNION ALL
+    SELECT 'chartevents' AS tbl,        432997491 AS row_count UNION ALL
+    SELECT 'datetimeevents' AS tbl,     9979761 AS row_count UNION ALL
+    SELECT 'inputevents' AS tbl,        10953713 AS row_count UNION ALL
+    SELECT 'outputevents' AS tbl,       5359395 AS row_count UNION ALL
+    SELECT 'procedureevents' AS tbl,    808706 AS row_count
 ) exp
 -- observed row count
-INNER JOIN 
+INNER JOIN
 (
     SELECT 'admissions' AS tbl, count(*) AS row_count FROM admissions UNION ALL
     SELECT 'd_hcpcs' AS tbl, count(*) AS row_count FROM d_hcpcs UNION ALL
